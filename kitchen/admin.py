@@ -1,3 +1,29 @@
 from django.contrib import admin
+from .models import Ingredient, DishType, Dish, Cook
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+
+@admin.register(Ingredient)
+class IngrediensAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DishType)
+class DishType(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Dish)
+class Dish(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Cook)
+class Cook(admin.UserAdmin):
+    list_display = admin.UserAdmin.list_display + ("years_of_experience",)
+    fieldsets = admin.UserAdmin.fieldsets + (
+        (("Additional info"), {"fields": ("years_of_experience",)}),
+    )
+    add_fieldsets = admin.UserAdmin.add_fieldsets + (
+        (("Additional info"), {"fields": ("first_name", "last_name", "years_of_experience")}),
+    )
