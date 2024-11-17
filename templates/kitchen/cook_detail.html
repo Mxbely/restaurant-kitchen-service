@@ -1,0 +1,73 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Ingredients {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+        
+        {% include 'includes/preloader.html' %}
+
+        <!-- Hero -->
+        <div class="section-header pb-6 bg-primary text-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-3 mb-4">{{ cook.username }}</h1>
+                        <p class="lead mb-3">{{ cook.first_name }}</p>
+                        <p class="lead mb-3">{{ cook.last_name }}</p>
+                        {% comment %} <p class="lead mb-5">Price: {{ dish.price }}</p> {% endcomment %}
+                        <div class="alert bg-secondary" role="alert">
+                            <span class="fas fa-info-circle"></span>
+                            Experience: {{ cook.year_of_experience }} year{{ cook.year_of_experience|pluralize }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- End of Hero -->
+        <div class="section section-md">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        {% comment %} <div class="mb-4">
+                            <span class="h5">Default table</span>
+                        </div> {% endcomment %}
+
+                        <div class="mb-5">
+                            <div class="mb-4">
+                                <span class="h5">Dishes</span>
+                            </div>
+                            <div class="table-responsive-sm">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        {% comment %} <th>Dish Type</th> {% endcomment %}
+                                    </tr>
+                                    {% for dish in cook.dishes.all %}
+                                    <tr>
+                                        <td>{{ dish.name }}</td>
+                                        <td>{{ dish.description }}</td>
+                                        {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
+                                    </tr>
+                                    {% endfor %}
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
