@@ -1,12 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
 
 from kitchen.models import Cook, Dish, Ingredient, DishType
 
 from django.urls import reverse_lazy
+from kitchen.forms import LoginForm, SignUpForm
 
 
+# @login_required
 def index(request):
     num_cooks = Cook.objects.all().count()
     num_dishes = Dish.objects.all().count()
@@ -150,3 +153,28 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
     template_name = "kitchen/dish_type_confirm_delete.html"
     success_url = reverse_lazy("kitchen:dish-type-list")
+
+
+def about(request):
+    return render(request, "kitchen/about.html")
+
+
+def contact(request):
+    return render(request, "kitchen/contact.html")
+
+
+# def login(request):
+#     form = LoginForm(request.POST)
+#     context = {
+#         "form": form,
+#     }
+#     return render(request, "accounts/login.html", context=context)
+
+
+def register(request):
+    print(request.POST)
+    form = SignUpForm(request.POST)
+    context = {
+        "form": form
+    }
+    return render(request, "registration/logged_out.html", context=context)

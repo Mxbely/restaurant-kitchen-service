@@ -20,6 +20,10 @@ from .views import (
     IngredientCreateView,
     IngredientUpdateView,
     IngredientDeleteView,
+    about,
+    contact,
+    # login,
+    register,
 )
 
 app_name = "kitchen"
@@ -56,4 +60,8 @@ urlpatterns = [
         IngredientDeleteView.as_view(),
         name="ingredient-delete",
     ),
+    path("about/", about, name="about"),
+    path("contact/", contact, name="contact"),
+    # path("login/", login, name="login"),
+    path("register/", register, name="register"),
 ]
