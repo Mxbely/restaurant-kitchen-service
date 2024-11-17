@@ -1,0 +1,106 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Ingredients {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+        
+        {% include 'includes/preloader.html' %}
+
+        <!-- Hero -->
+        <div class="section-header pb-6 bg-primary text-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-3 mb-4">Ingredients Tables</h1>
+                        <p class="lead mb-5">information</p>
+                        <div class="alert bg-secondary" role="alert">
+                            <span class="fas fa-info-circle"></span>
+                            <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ......
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- End of Hero -->
+        <div class="section section-md">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        {% comment %} <div class="mb-4">
+                            <span class="h5">Default table</span>
+                        </div> {% endcomment %}
+
+                        <div class="mb-5">
+                            <div class="mb-4">
+                                <span class="h5">Ingredients</span>
+                                <a style="float:right" href="{% url 'kitchen:ingredient-create' %}" style="float:right" class="btn btn-primary link-to-page">Create</a>
+                            </div>
+                            <div class="table-responsive-sm">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        {% comment %} <th>Dish Type</th> {% endcomment %}
+                                    </tr>
+                                    {% for ingredient in ingredient_list %}
+                                    <tr>
+                                        <td>{{ ingredient.id }}</td>
+                                        <td>{{ ingredient.name }}</td>
+                                        {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
+                                    </tr>
+                                    {% endfor %}
+
+{% comment %} 
+                                    <tr>
+                                        <th scope="col" id="class2">Class</th>
+                                        <th scope="col" id="teacher2">Teacher</th>
+                                        <th scope="col" id="males2">Males</th>
+                                        <th scope="col" id="females2">Females</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="firstyear2" rowspan="2">First Year</th>
+                                        <th scope="row" id="Bolter2" headers="firstyear2 teacher2">D. Bolter</th>
+                                        <td headers="firstyear2 Bolter2 males2">5</td>
+                                        <td headers="firstyear2 Bolter2 females2">4</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="Cheetham2" headers="firstyear2 teacher2">A. Cheetham</th>
+                                        <td headers="firstyear2 Cheetham2 males2">7</td>
+                                        <td headers="firstyear2 Cheetham2 females2">9</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="secondyear2" rowspan="3">Second Year</th>
+                                        <th scope="row" id="Lam2" headers="secondyear2 teacher2">M. Lam</th>
+                                        <td headers="secondyear2 Lam2 males2">3</td>
+                                        <td headers="secondyear2 Lam2 females2">9</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="Crossy2" headers="secondyear2 teacher2">S. Crossy</th>
+                                        <td headers="secondyear2 Crossy2 males2">4</td>
+                                        <td headers="secondyear2 Crossy2 females2">3</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" id="Forsyth2" headers="secondyear2 teacher2">A. Forsyth</th>
+                                        <td headers="secondyear2 Forsyth2 males2">6</td>
+                                        <td headers="secondyear2 Forsyth2 females2">9</td>
+                                    </tr> {% endcomment %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
