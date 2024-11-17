@@ -62,4 +62,4 @@ urlpatterns = [
     path("about/", about, name="about"),
     path("contact/", contact, name="contact"),
     path("register/", register, name="register"),
-]
+] 
