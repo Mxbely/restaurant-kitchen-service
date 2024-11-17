@@ -133,3 +133,5 @@ ASSETS_ROOT = "/static/assets"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "kitchen.Cook"
+
+LOGIN_REDIRECT_URL = "/"
