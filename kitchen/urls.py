@@ -22,7 +22,6 @@ from .views import (
     IngredientDeleteView,
     about,
     contact,
-    # login,
     register,
 )
 
@@ -62,6 +61,5 @@ urlpatterns = [
     ),
     path("about/", about, name="about"),
     path("contact/", contact, name="contact"),
-    # path("login/", login, name="login"),
     path("register/", register, name="register"),
 ]
