@@ -50,10 +50,10 @@
                                 <div class="row g-0">
                                     <div class="col ps-0 py-3">
                                         <ul class="list-style-none">
-                                            <li><a class="dropdown-item" href="/ui-accordions.html">Dishes list</a></li>
-                                            <li><a class="dropdown-item" href="/ui-alerts.html">Dish types</a></li>
-                                            <li><a class="dropdown-item" href="/ui-badges.html">Ingredients</a></li>
-                                            <li><a class="dropdown-item" href="/ui-cards.html">Cooks</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'kitchen:dish-list' %}">Dish list</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'kitchen:dish-type-list' %}">Dish types</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'kitchen:ingredient-list' %}">Ingredients</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'kitchen:cook-list' %}">Cooks</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -82,16 +82,36 @@
                     </ul>
                 </div>
                 <div class="d-flex align-items-center">
+{% comment %} 
                     <form method="post", action="{% url 'logout' %}">
                         {% csrf_token %}
-                        {% comment %} <p class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3">Logout</p> {% endcomment %}
+                        <p class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3">Logout</p>
                         <button type="submit" class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3">
                     </form>
-                    <a href="{% url 'logout' %}?next={{request.path}}"
-                        class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"><span class="fas fa-sign-out-alt me-2"></span> Logout</a>
-                    <a href="#" 
-                        target="_blank" class="btn btn-tertiary"><i class="fas fa-cloud-download-alt me-2"></i>user: {{ user.username }}</a>
-                    {% comment %} <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                    {% endcomment %}
+                    {% if user.is_authenticated %}
+
+                    {% comment %} <a href="{% url 'logout' %}?next={{ request.path }}"
+                        class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"><span class="fas fa-sign-out-alt me-2"></span> Logout</a> {% endcomment %}
+                    
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        {% comment %} <button type="submit">logout</button> {% endcomment %}
+                        {% comment %} <a href="{% url 'logout' %}?next={{ request.path }}"
+                        class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"><span class="fas fa-sign-out-alt me-2"></span> Logout</a> {% endcomment %}
+                        <input type="submit" value="Logout" class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"><span class="fas fa-sign-out-alt me-2"></span>
+                    </form>
+                    
+                    <a href="#" target="_blank" class="btn btn-tertiary">user: {{ user.username }}</a>
+                    {% else %}
+                        {% if accountslogout not in request.path %}
+                            <a href="{% url 'login'%}?next={{request.path}}"
+                        {% else %}
+                            <a href="{% url 'login'%}"
+                        {% endif %}
+                            class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"><span class="fas fa-sign-out-alt me-2"></span>Login</a>
+                    {% endif %}
+                        {% comment %} <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button> {% endcomment %}
                 </div>
