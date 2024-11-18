@@ -46,12 +46,20 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
                                         {% comment %} <th>Dish Type</th> {% endcomment %}
                                     </tr>
                                     {% for ingredient in ingredient_list %}
                                     <tr>
                                         <td>{{ ingredient.id }}</td>
                                         <td>{{ ingredient.name }}</td>
+                                        <td><a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary-app link-to-page">
+                                        Update
+                                        </a></td>
+                                        <td><a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page">
+                                        Delete
+                                        </a></td>
                                         {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
                                     </tr>
                                     {% endfor %}

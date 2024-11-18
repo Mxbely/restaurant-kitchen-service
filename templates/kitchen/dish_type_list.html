@@ -42,11 +42,19 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
                                     </tr>
                                     {% for type in dishtype_list %}
                                     <tr>
                                         <td>{{ type.id }}</td>
                                         <td>{{ type.name }}</td>
+                                        <td><a href="{% url 'kitchen:dish-type-update' pk=type.id %}" class="btn btn-secondary-app link-to-page">
+                                        Update
+                                        </a></td>
+                                        <td><a href="{% url 'kitchen:dish-type-delete' pk=type.id %}" class="btn btn-danger link-to-page">
+                                        Delete
+                                        </a></td>
                                     </tr>
                                     {% endfor %}
                                 </table>
