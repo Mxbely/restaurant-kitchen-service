@@ -23,6 +23,12 @@
                             <span class="fas fa-info-circle"></span>
                             Price: {{ dish.price }}
                         </div>
+                        <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-white link-to-page">
+                        Update Dish Info
+                        </a>
+                        <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+                        Delete Dish
+                        </a>
                     </div>
                 </div>
             </div>
