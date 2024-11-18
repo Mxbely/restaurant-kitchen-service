@@ -46,6 +46,7 @@
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>E-mail</th>
+                                        <th>Experience</th>
                                     </tr>
                                     {% for cook in cook_list %}
                                     <tr>
@@ -54,6 +55,7 @@
                                         <td>{{ cook.first_name }}</td>
                                         <td>{{ cook.last_name }}</td>
                                         <td>{{ cook.email }}</td>
+                                        <td>{% if cook.year_of_experience %}{{ cook.year_of_experience }}{% else %}Unknown{% endif %}</td>
                                     </tr>
                                     {% endfor %}
                                 </table>
