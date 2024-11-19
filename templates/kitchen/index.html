@@ -79,23 +79,24 @@
 
                         </div>
                         <h1 class="fw-bolder display-2">
-                            Temporary name
+                            Good restaurant
                         </h1>
                         <h2 class="lead fw-normal text-muted mb-4 px-lg-10">
-                            Open-source starter designed on top of Bootstrap 5 UI Kit (No jQuery)
+                            Gastro-trip
                         </h2>
+                        <br><br><br>
                         <!-- Button Modal -->
                         <div class="d-flex justify-content-center align-items-center mb-5">
-                            <a href="#components" class="btn btn-tertiary mb-3 mt-2 me-2 me-md-3 animate-up-2"><span
-                                    class="fas fa-th-large me-2"></span> <span class="d-none d-md-inline">Explore
-                                    components</span> <span class="d-md-none">Components</span></a>
+                            <a href="{% url 'kitchen:about' %}" class="btn btn-tertiary mb-3 mt-2 me-2 me-md-3 animate-up-2"><span
+                                    class="fas fa-th-large me-2"></span> <span class="d-none d-md-inline">About us
+                                    </span> <span class="d-md-none"></span></a>
                         </div>
                         <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
                             <a href="https://themesberg.com" class="d-block text-center mx-auto" target="_blank">
                                 <img src="{{ ASSETS_ROOT }}/img/themesberg.svg" class="d-block mx-auto mb-3" height="25"
                                     width="25" alt="Themesberg Logo">
                                 <span class="text-muted font-small">
-                                    &copy; Themesberg - coded by AppSeed.
+                                    &copy; Maxym Bilyi - coded by Django
                                 </span>
                             </a>
                         </div>
@@ -114,28 +115,28 @@
                 <div class="row justify-content-center mb-5 mb-lg-6">
                     <div class="col-6 col-md-3 text-center mb-4">
                         <div class="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle mb-4">
-                            <span class="fas fa-puzzle-piece text-tertiary"></span>
+                            <span class="fas fa-cookie-bite text-tertiary"></span>
                         </div>
                         <h3 class="fw-bolder">{{ num_dishes }}</h3>
                         <p class="text-gray">Number dishes</p>
                     </div>
                     <div class="col-6 col-md-3 text-center mb-4">
                         <div class="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle mb-4">
-                            <span class="fas fa-pager text-tertiary"></span>
+                            <span class="fab fa-java text-tertiary"></span>
                         </div>
                         <h3 class="fw-bolder">{{ num_dish_types }}</h3>
                         <p class="text-gray">Number dish types</p>
                     </div>
                     <div class="col-6 col-md-3 text-center">
                         <div class="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle mb-4">
-                            <span class="fab fa-sass text-tertiary"></span>
+                            <span class="fab fa-raspberry-pi text-tertiary"></span>
                         </div>
                         <h3 class="fw-bolder">{{ num_ingredients }}</h3>
                         <p class="text-gray">Number ingredients</p>
                     </div>
                     <div class="col-6 col-md-3 text-center">
                         <div class="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle mb-4">
-                            <span class="fab fa-js-square text-tertiary"></span>
+                            <span class="fab fa-odnoklassniki text-tertiary"></span>
                         </div>
                         <h3 class="fw-bolder">{{ num_cooks }}</h3>
                         <p class="text-gray">Number Cooks</p>
