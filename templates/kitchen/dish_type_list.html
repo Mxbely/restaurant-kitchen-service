@@ -1,6 +1,7 @@
 {% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
 
-{% block title %} Dish types {% endblock %} 
+{% block title %} Dish Types {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -16,11 +17,16 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-8 text-center">
-                        <h1 class="display-3 mb-4">Dish Types Table</h1>
+                        <h1 class="display-3 mb-4">Dish Types</h1>
                         <p class="lead mb-5">information</p>
                         <div class="alert bg-secondary" role="alert">
-                            <span class="fas fa-info-circle"></span>
-                            <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ......
+                            <span class="fas fa-search"></span>
+                            {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
+                        <form method="get" action="" class="form-inline">
+                            {{ search_form|crispy }}
+                            <br>
+                            <input class="btn btn-white" type="submit" value="Search">
+                        </form>
                         </div>
                     </div>
                 </div>

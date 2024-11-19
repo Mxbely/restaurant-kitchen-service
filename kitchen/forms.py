@@ -81,3 +81,47 @@ class CookUpdateForm(forms.ModelForm):
     class Meta:
         model = Cook
         fields = ("username", "email", "first_name", "last_name", "year_of_experience")
+
+
+class IngredientSearchForm(forms.Form):
+    name = forms.CharField(
+        label="",
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name", "class": "form-control"}
+        ),
+    )
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        label="",
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name", "class": "form-control"}
+        ),
+    )
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        label="",
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name", "class": "form-control"}
+        ),
+    )
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        label="",
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by username", "class": "form-control"}
+        ),
+    )
