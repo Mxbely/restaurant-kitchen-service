@@ -1,73 +1,74 @@
 {% extends "layouts/base.html" %}
 {% load crispy_forms_filters %}
 
-{% block title %} Dishes {% endblock %} 
+{% block title %} Dishes {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
 
-    <main>
-        
-        {% include 'includes/preloader.html' %}
+  <main>
 
-        <!-- Hero -->
-        <div class="section-header pb-6 bg-primary text-white">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 text-center">
-                        <h1 class="display-3 mb-4">Dishes</h1>
-                        <p class="lead mb-5">information</p>
-                        <div class="alert bg-secondary" role="alert">
-                            <span class="fas fa-search"></span>
-                            {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
-                        <form method="get" action="" class="form-inline">
-                            {{ search_form|crispy }}
-                            <br>
-                            <input class="btn btn-white" type="submit" value="Search">
-                        </form>
-                        </div>
-                    </div>
-                </div>
+    {% include 'includes/preloader.html' %}
+
+    <!-- Hero -->
+    <div class="section-header pb-6 bg-primary text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 text-center">
+            <h1 class="display-3 mb-4">Dishes</h1>
+            <p class="lead mb-5">information</p>
+            <div class="alert bg-secondary" role="alert">
+              <span class="fas fa-search"></span>
+              {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
+              <form method="get" action="" class="form-inline">
+                {{ search_form|crispy }}
+                <br>
+                <input class="btn btn-white" type="submit" value="Search">
+              </form>
             </div>
+          </div>
         </div>
-        
-        <!-- End of Hero -->
-        <div class="section section-md">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
+      </div>
+    </div>
 
-                        <div class="mb-5">
-                            <div class="mb-4">
-                                <span class="h5">Dishes</span>
-                                <a style="float:right" href="{% url 'kitchen:dish-create' %}" style="float:right" class="btn btn-primary link-to-page">Create</a>
-                            </div>
-                            <div class="table-responsive-sm">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Price</th>
-                                    </tr>
-                                    {% for dish in dish_list %}
-                                    <tr>
-                                        <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></td>
-                                        <td>{{ dish.dish_type }}</td>
-                                        <td>{{ dish.price }}</td>
+    <!-- End of Hero -->
+    <div class="section section-md">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
 
-                                    </tr>
-                                    {% endfor %}
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-5">
+              <div class="mb-4">
+                <span class="h5">Dishes</span>
+                <a style="float:right" href="{% url 'kitchen:dish-create' %}" style="float:right"
+                   class="btn btn-primary link-to-page">Create</a>
+              </div>
+              <div class="table-responsive-sm">
+                <table class="table table-striped">
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                  </tr>
+                  {% for dish in dish_list %}
+                    <tr>
+                      <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></td>
+                      <td>{{ dish.dish_type }}</td>
+                      <td>{{ dish.price }}</td>
+
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-    </main>
+  </main>
 
 {% endblock content %}
 

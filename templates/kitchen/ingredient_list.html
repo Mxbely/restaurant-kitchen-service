@@ -1,76 +1,79 @@
 {% extends "layouts/base.html" %}
 {% load crispy_forms_filters %}
 
-{% block title %} Ingredients {% endblock %} 
+{% block title %} Ingredients {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
 
-    <main>
-        
-        {% include 'includes/preloader.html' %}
+  <main>
 
-        <!-- Hero -->
-        <div class="section-header pb-6 bg-primary text-white">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 text-center">
-                        <h1 class="display-3 mb-4">Ingredients</h1>
-                        <p class="lead mb-5">information</p>
-                        <div class="alert bg-secondary" role="alert">
-                            <span class="fas fa-search"></span>
-                            {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
-                            <form method="get" action="" class="form-inline">
-                              {{ search_form|crispy }}
-                              <br>
-                              <input class="btn btn-white" type="submit" value="Search">
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    {% include 'includes/preloader.html' %}
+
+    <!-- Hero -->
+    <div class="section-header pb-6 bg-primary text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 text-center">
+            <h1 class="display-3 mb-4">Ingredients</h1>
+            <p class="lead mb-5">information</p>
+            <div class="alert bg-secondary" role="alert">
+              <span class="fas fa-search"></span>
+              {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
+              <form method="get" action="" class="form-inline">
+                {{ search_form|crispy }}
+                <br>
+                <input class="btn btn-white" type="submit" value="Search">
+              </form>
             </div>
+          </div>
         </div>
-        
-        <!-- End of Hero -->
-        <div class="section section-md">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        {% comment %} <div class="mb-4">
+      </div>
+    </div>
+
+    <!-- End of Hero -->
+    <div class="section section-md">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            {% comment %} <div class="mb-4">
                             <span class="h5">Default table</span>
                         </div> {% endcomment %}
 
-                        <div class="mb-5">
-                            <div class="mb-4">
-                                <span class="h5">Ingredients</span>
-                                <a style="float:right" href="{% url 'kitchen:ingredient-create' %}" style="float:right" class="btn btn-primary link-to-page">Create</a>
-                            </div>
-                            <div class="table-responsive-sm">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Update</th>
-                                        <th>Delete</th>
-                                        {% comment %} <th>Dish Type</th> {% endcomment %}
-                                    </tr>
-                                    {% for ingredient in ingredient_list %}
-                                    <tr>
-                                        <td>{{ ingredient.id }}</td>
-                                        <td>{{ ingredient.name }}</td>
-                                        <td><a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary-app link-to-page">
-                                        Update
-                                        </a></td>
-                                        <td><a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page">
-                                        Delete
-                                        </a></td>
-                                        {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
-                                    </tr>
-                                    {% endfor %}
+            <div class="mb-5">
+              <div class="mb-4">
+                <span class="h5">Ingredients</span>
+                <a style="float:right" href="{% url 'kitchen:ingredient-create' %}" style="float:right"
+                   class="btn btn-primary link-to-page">Create</a>
+              </div>
+              <div class="table-responsive-sm">
+                <table class="table table-striped">
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    {% comment %} <th>Dish Type</th> {% endcomment %}
+                  </tr>
+                  {% for ingredient in ingredient_list %}
+                    <tr>
+                      <td>{{ ingredient.id }}</td>
+                      <td>{{ ingredient.name }}</td>
+                      <td><a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}"
+                             class="btn btn-secondary-app link-to-page">
+                        Update
+                      </a></td>
+                      <td><a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}"
+                             class="btn btn-danger link-to-page">
+                        Delete
+                      </a></td>
+                      {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
+                    </tr>
+                  {% endfor %}
 
-{% comment %} 
+                  {% comment %} 
                                     <tr>
                                         <th scope="col" id="class2">Class</th>
                                         <th scope="col" id="teacher2">Teacher</th>
@@ -104,15 +107,15 @@
                                         <td headers="secondyear2 Forsyth2 males2">6</td>
                                         <td headers="secondyear2 Forsyth2 females2">9</td>
                                     </tr> {% endcomment %}
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-    </main>
+  </main>
 
 {% endblock content %}
 
