@@ -4,83 +4,35 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from kitchen.models import Cook
+from django.contrib.auth import get_user_model
+
+from kitchen.models import Dish, Ingredient, DishType
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(
-        widget=forms.TextInput(
-            attrs={"placeholder": "Username", "class": "form-control"}
-        )
+class DishCreateForm(forms.ModelForm):
+    dish_type = forms.ModelChoiceField(
+        queryset=DishType.objects.all(),
+        widget=forms.Select(),
     )
-    password = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Password", "class": "form-control"}
-        )
+    cooks = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple(),
     )
-
-
-class SignUpForm(UserCreationForm):
-    username = forms.CharField(
-        widget=forms.TextInput(
-            attrs={"placeholder": "Username", "class": "form-control"}
-        )
+    ingredients = forms.ModelMultipleChoiceField(
+        queryset=Ingredient.objects.all(),
+        widget=forms.CheckboxSelectMultiple(),
     )
-    email = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
-                "placeholder": "Email",
-                "class": "form-control",
-            }
-        ),
-        required=False,
-    )
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "First name", 
-                "class": "form-control"
-                }
-        ),
-        required=False,
-    )
-    last_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Last name",
-                "class": "form-control"
-                }
-        ),
-        required=False,
-    )
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Password", "class": "form-control"}
-        )
-    )
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Password check", "class": "form-control"}
-        )
-    )
-
+    
     class Meta:
-        model = Cook
+        model = Dish
         fields = (
-            "username",
-            "email",
-            "first_name",
-            "last_name",
-            "password1",
-            "password2",
+            "name", 
+            "description", 
+            "price", 
+            "dish_type", 
+            "cooks",
+            "ingredients",
         )
-
-
-class CookUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Cook
-        fields = ("username", "email", "first_name", "last_name", "year_of_experience")
 
 
 class IngredientSearchForm(forms.Form):
@@ -112,16 +64,5 @@ class DishTypeSearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(
             attrs={"placeholder": "Search by name", "class": "form-control"}
-        ),
-    )
-
-
-class CookSearchForm(forms.Form):
-    username = forms.CharField(
-        label="",
-        max_length=255,
-        required=False,
-        widget=forms.TextInput(
-            attrs={"placeholder": "Search by username", "class": "form-control"}
         ),
     )

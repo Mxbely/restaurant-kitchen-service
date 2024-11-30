@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "accounts",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -134,9 +135,13 @@ ASSETS_ROOT = "/static/assets"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "kitchen.Cook"
+AUTH_USER_MODEL = "accounts.Cook"
 
 LOGIN_REDIRECT_URL = "/"
+
+LOGIN_URL = "accounts:login"
+
+LOGOUT_REDIRECT_URL = "/"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
