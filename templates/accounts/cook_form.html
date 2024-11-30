@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %} Cooks {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% include 'includes/preloader.html' %}
+
+{% block content %}
+  <!-- Hero -->
+  <div class="section-header pb-6 bg-primary text-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 text-center">
+          <h1 class="display-3 mb-4">{{ object|yesno:"Update,Create" }} Cook</h1>
+          <div class="alert bg-secondary-app">
+            <form action="" method="post" novalidate>
+              {% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+            <a class="mb-2" href="{% url 'accounts:cook-list' %}">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block javascripts %}{% endblock javascripts %}
