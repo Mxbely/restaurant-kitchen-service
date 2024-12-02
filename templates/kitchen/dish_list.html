@@ -21,7 +21,6 @@
             <p class="lead mb-5">information</p>
             <div class="alert bg-secondary" role="alert">
               <span class="fas fa-search"></span>
-              {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
               <form method="get" action="" class="form-inline">
                 {{ search_form|crispy }}
                 <br>
@@ -42,8 +41,7 @@
             <div class="mb-5">
               <div class="mb-4">
                 <span class="h5">Dishes</span>
-                <a style="float:right" href="{% url 'kitchen:dish-create' %}" style="float:right"
-                   class="btn btn-primary link-to-page">Create</a>
+                <a style="float:right" href="{% url 'kitchen:dish-create' %}" style="float:right" class="btn btn-primary link-to-page">Create</a>
               </div>
               <div class="table-responsive-sm">
                 <table class="table table-striped">
@@ -54,7 +52,7 @@
                   </tr>
                   {% for dish in dish_list %}
                     <tr>
-                      <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></td>
+                      <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="text-primary text-decoration-underline">{{ dish.name }}</a></td>
                       <td>{{ dish.dish_type }}</td>
                       <td>{{ dish.price }}</td>
 
