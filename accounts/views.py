@@ -1,5 +1,3 @@
-from django.views.generic.edit import CreateView
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
@@ -7,8 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.shortcuts import render, redirect
 
-from .forms import CookRegisterForm, CookSearchForm, CookUpdateForm
-from .models import Cook
+from accounts.forms import ChangePasswordForm, CookRegisterForm, CookSearchForm, CookUpdateForm
+from accounts.models import Cook
 from restaurant_kitchen_service.settings import LOGIN_URL
 
 
@@ -33,39 +31,49 @@ class CookListView(generic.ListView):
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
-    login_url=LOGIN_URL
+    login_url = LOGIN_URL
+    queryset = Cook.objects.prefetch_related("cooks_dishes")
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Cook
     form_class = CookRegisterForm
     success_url = reverse_lazy("accounts:cook-list")
-    login_url=LOGIN_URL
+    login_url = LOGIN_URL
 
 
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Cook
     form_class = CookUpdateForm
     success_url = reverse_lazy("accounts:cook-list")
-    login_url=LOGIN_URL
+    login_url = LOGIN_URL
 
 
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Cook
     success_url = reverse_lazy("accounts:cook-list")
-    login_url=LOGIN_URL
+    login_url = LOGIN_URL
 
-
-def register(request):
-    if request.method == 'POST':
-        form = CookRegisterForm(request.POST)
+class RegisterView(generic.View):
+    def post(self, request, *args, **kwargs):
+        form = CookRegisterForm(self.request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('kitchen:index')
-    else:
+            if user:
+                login(self.request, user)
+                return redirect('kitchen:index')
+        return render(self.request, "registration/register.html", {'form': form})
+    
+    def get(self, request, *args, **kwargs):
         form = CookRegisterForm()
-    return render(request, "registration/register.html", {'form': form})
+        return render(self.request, "registration/register.html", {'form': form})
+
+
+class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
+    form_class = ChangePasswordForm
+    success_url = reverse_lazy("accounts:cook-list")
+    login_url = LOGIN_URL
+    template_name = "accounts/cook_form.html"

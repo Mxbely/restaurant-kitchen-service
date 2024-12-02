@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 
 from .models import Cook
 
@@ -51,7 +51,7 @@ class CookValidationFormMixin:
 
     def clean_year_of_experience(self):
         year_of_experience = self.cleaned_data.get("year_of_experience")
-        if year_of_experience < 0:
+        if year_of_experience and year_of_experience < 0:
             raise forms.ValidationError("Please enter a valid number for experience.")
         return year_of_experience
     
@@ -88,6 +88,7 @@ class CookUpdateForm(forms.ModelForm, CookValidationFormMixin):
         model = Cook
         fields = ("username", "email", "first_name", "last_name", "year_of_experience")
 
+
 class CookSearchForm(forms.Form):
     username = forms.CharField(
         label="",
@@ -97,3 +98,18 @@ class CookSearchForm(forms.Form):
             attrs={"placeholder": "Search by username", "class": "form-control"}
         ),
     )
+
+
+class ChangePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={"placeholder": "Old Password"})
+    )
+    new_password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={"placeholder": "New Password"})
+    )
+    new_password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={"placeholder": "Confirm New Password"})
+    )
+
+    class Meta:
+        fields = ["old_password", "new_password1", "new_password2"]

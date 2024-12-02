@@ -6,6 +6,9 @@ from django.contrib.auth import settings
 class Ingredient(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
+    class Meta:
+        ordering = ["name"]
+    
     def __str__(self):
         return self.name
 
@@ -13,6 +16,8 @@ class Ingredient(models.Model):
 class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
+    class Meta:
+        ordering = ["name"]
     def __str__(self):
         return self.name
 
@@ -30,6 +35,7 @@ class Dish(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['name', 'dish_type'], name='unique_dish_name_dish_type')
         ]
+        ordering = ["name"]
 
     def __str__(self):
         return self.name

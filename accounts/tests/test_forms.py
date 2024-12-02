@@ -5,8 +5,8 @@ from accounts.forms import (
     CookRegisterForm,
     CookUpdateForm,
     CookSearchForm,
+    ChangePasswordForm,
 )
-from accounts.models import Cook
 
 
 class FormsTest(TestCase):
@@ -43,3 +43,16 @@ class FormsTest(TestCase):
         form = CookUpdateForm(data=form_data)
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data, form_data)
+
+    def test_change_password_form(self):
+        user = get_user_model().objects.create_user(username="user.user", password="Password12345")
+        form_data = {
+            "old_password": "Password12345",
+            "new_password1": "Sa12De34",
+            "new_password2": "Sa12De34",
+        }
+        form = ChangePasswordForm(user=user, data=form_data)
+        self.assertTrue(form.is_valid())
+        cleaned_data = form.cleaned_data
+        self.assertEqual(cleaned_data["new_password1"], "Sa12De34")
+        self.assertEqual(cleaned_data["new_password2"], "Sa12De34")
