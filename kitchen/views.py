@@ -8,11 +8,9 @@ from accounts.models import Cook
 
 from django.urls import reverse_lazy
 from kitchen.forms import IngredientSearchForm, DishTypeSearchForm, DishSearchForm, DishCreateForm
-from restaurant_kitchen_service.settings import LOGIN_URL
+from restaurant_kitchen_service.settings.base import LOGIN_URL
 
 
-
-# @login_required
 def index(request):
     num_cooks = Cook.objects.all().count()
     num_dishes = Dish.objects.all().count()

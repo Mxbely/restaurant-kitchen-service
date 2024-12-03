@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 
 from accounts.forms import ChangePasswordForm, CookRegisterForm, CookSearchForm, CookUpdateForm
 from accounts.models import Cook
-from restaurant_kitchen_service.settings import LOGIN_URL
+from restaurant_kitchen_service.settings.base import LOGIN_URL
 
 
 class CookListView(generic.ListView):
