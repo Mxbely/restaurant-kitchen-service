@@ -22,14 +22,14 @@ class DishCreateForm(forms.ModelForm):
         queryset=Ingredient.objects.all(),
         widget=forms.CheckboxSelectMultiple(),
     )
-    
+
     class Meta:
         model = Dish
         fields = (
-            "name", 
-            "description", 
-            "price", 
-            "dish_type", 
+            "name",
+            "description",
+            "price",
+            "dish_type",
             "cooks",
             "ingredients",
         )

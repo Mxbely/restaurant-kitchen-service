@@ -5,7 +5,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.shortcuts import render, redirect
 
-from accounts.forms import ChangePasswordForm, CookRegisterForm, CookSearchForm, CookUpdateForm
+from accounts.forms import (
+    ChangePasswordForm,
+    CookRegisterForm,
+    CookSearchForm,
+    CookUpdateForm,
+)
 from accounts.models import Cook
 from restaurant_kitchen_service.settings.base import LOGIN_URL
 
@@ -54,22 +59,23 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("accounts:cook-list")
     login_url = LOGIN_URL
 
+
 class RegisterView(generic.View):
     def post(self, request, *args, **kwargs):
         form = CookRegisterForm(self.request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password1")
             user = authenticate(username=username, password=raw_password)
             if user:
                 login(self.request, user)
-                return redirect('kitchen:index')
-        return render(self.request, "registration/register.html", {'form': form})
-    
+                return redirect("kitchen:index")
+        return render(self.request, "registration/register.html", {"form": form})
+
     def get(self, request, *args, **kwargs):
         form = CookRegisterForm()
-        return render(self.request, "registration/register.html", {'form': form})
+        return render(self.request, "registration/register.html", {"form": form})
 
 
 class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):

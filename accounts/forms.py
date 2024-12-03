@@ -23,28 +23,19 @@ class CookValidationFormMixin:
     )
     first_name = forms.CharField(
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "First name", 
-                "class": "form-control"
-                }
+            attrs={"placeholder": "First name", "class": "form-control"}
         ),
         required=False,
     )
     last_name = forms.CharField(
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "Last name",
-                "class": "form-control"
-                }
+            attrs={"placeholder": "Last name", "class": "form-control"}
         ),
         required=False,
     )
     year_of_experience = forms.CharField(
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "Experience (years)",
-                "class": "form-control"
-                }
+            attrs={"placeholder": "Experience (years)", "class": "form-control"}
         ),
         required=False,
     )
@@ -54,7 +45,7 @@ class CookValidationFormMixin:
         if year_of_experience and year_of_experience < 0:
             raise forms.ValidationError("Please enter a valid number for experience.")
         return year_of_experience
-    
+
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if email and Cook.objects.filter(email=email).exists():
@@ -67,7 +58,7 @@ class CookValidationFormMixin:
 
 
 class CookRegisterForm(UserCreationForm, CookValidationFormMixin):
-    
+
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={"placeholder": "Password", "class": "form-control"}
@@ -80,10 +71,17 @@ class CookRegisterForm(UserCreationForm, CookValidationFormMixin):
     )
 
     class Meta(CookValidationFormMixin.Meta):
-        fields = CookValidationFormMixin.Meta.fields + ("password1", "password2",)
+        fields = CookValidationFormMixin.Meta.fields + (
+            "password1",
+            "password2",
+        )
 
 
 class CookUpdateForm(forms.ModelForm, CookValidationFormMixin):
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        return email
+
     class Meta:
         model = Cook
         fields = ("username", "email", "first_name", "last_name", "year_of_experience")

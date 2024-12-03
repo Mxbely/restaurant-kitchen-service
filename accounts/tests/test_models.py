@@ -11,8 +11,8 @@ class TestModels(TestCase):
 
     def test_cook_year_of_experience(self):
         cook = get_user_model().objects.create(
-            username="username", 
-            password="password", 
+            username="username",
+            password="password",
             year_of_experience=10,
         )
         self.assertEqual(cook.year_of_experience, 10)

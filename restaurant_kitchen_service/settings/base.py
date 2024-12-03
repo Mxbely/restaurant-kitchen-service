@@ -31,14 +31,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 INSTALLED_APPS = [
     "accounts",
-    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     "kitchen",
     "crispy_forms",
     "crispy_bootstrap4",

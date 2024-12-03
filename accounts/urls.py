@@ -1,8 +1,15 @@
-
 from django.urls import path
 from django.urls import path, include
 
-from .views import CookListView, CookDetailView, CookCreateView, CookUpdateView, CookDeleteView, ChangePasswordView, RegisterView
+from .views import (
+    CookListView,
+    CookDetailView,
+    CookCreateView,
+    CookUpdateView,
+    CookDeleteView,
+    ChangePasswordView,
+    RegisterView,
+)
 
 app_name = "accounts"
 
@@ -14,5 +21,9 @@ urlpatterns = [
     path("cooks/create/", CookCreateView.as_view(), name="cook-create"),
     path("cooks/<int:pk>/update/", CookUpdateView.as_view(), name="cook-update"),
     path("cooks/<int:pk>/delete/", CookDeleteView.as_view(), name="cook-delete"),
-    path("cooks/<int:pk>/change-password/", ChangePasswordView.as_view(), name="change-password"),
+    path(
+        "cooks/<int:pk>/change-password/",
+        ChangePasswordView.as_view(),
+        name="change-password",
+    ),
 ]

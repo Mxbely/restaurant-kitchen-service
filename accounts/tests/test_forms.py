@@ -31,7 +31,7 @@ class FormsTest(TestCase):
         form = CookRegisterForm(data=form_data)
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data, form_data)
-    
+
     def test_cook_update_form(self):
         form_data = {
             "username": "test_username",
@@ -45,7 +45,9 @@ class FormsTest(TestCase):
         self.assertEqual(form.cleaned_data, form_data)
 
     def test_change_password_form(self):
-        user = get_user_model().objects.create_user(username="user.user", password="Password12345")
+        user = get_user_model().objects.create_user(
+            username="user.user", password="Password12345"
+        )
         form_data = {
             "old_password": "Password12345",
             "new_password1": "Sa12De34",

@@ -42,17 +42,17 @@ class PublicTests(TestCase):
         """Test that the dish type list view is accessible without login."""
         res = self.client.get(DISH_TYPE_LIST_URL)
         self.assertEqual(res.status_code, 200)
-    
+
     def test_dish_type_list_required(self):
         """Test that the ingredient list view is accessible without login."""
         res = self.client.get(INGREDIENT_LIST_URL)
         self.assertEqual(res.status_code, 200)
-    
+
     def test_about_required(self):
         """Test that the about page is accessible without login."""
         res = self.client.get(ABOUT_URL)
         self.assertEqual(res.status_code, 200)
-    
+
     def test_contact_required(self):
         """Test that the contact page is accessible without login."""
         res = self.client.get(CONTACT_URL)
@@ -66,8 +66,12 @@ class PrivateTests(TestCase):
             "password123",
         )
         self.client.force_login(self.user)
-        self.cook1 = get_user_model().objects.create_user(username="username1", password="password")
-        self.cook2 = get_user_model().objects.create_user(username="username2", password="password")
+        self.cook1 = get_user_model().objects.create_user(
+            username="username1", password="password"
+        )
+        self.cook2 = get_user_model().objects.create_user(
+            username="username2", password="password"
+        )
         self.ingredient1 = Ingredient.objects.create(name="ingredient1")
         self.ingredient2 = Ingredient.objects.create(name="ingredient2")
         self.dish_type = DishType.objects.create(name="type_name")
@@ -101,8 +105,12 @@ class PrivateTests(TestCase):
             "description": "A test dish",
             "price": 12.99,
             "dish_type": self.dish_type.id,
-            "cooks": [1,],
-            "ingredients": [1,],
+            "cooks": [
+                1,
+            ],
+            "ingredients": [
+                1,
+            ],
         }
         res = self.client.post(DISH_CREATE_URL, data=form_data)
         self.assertEqual(res.status_code, 302)
@@ -122,8 +130,12 @@ class PrivateTests(TestCase):
             "description": "Updated Description",
             "price": 15.99,
             "dish_type": self.dish_type.id,
-            "cooks": [1,],
-            "ingredients": [1,],
+            "cooks": [
+                1,
+            ],
+            "ingredients": [
+                1,
+            ],
         }
         res = self.client.post(DISH_UPDATE_URL, data=form_data)
         self.dish.refresh_from_db()

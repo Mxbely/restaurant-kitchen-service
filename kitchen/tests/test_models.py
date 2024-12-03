@@ -22,10 +22,14 @@ class TestModels(TestCase):
             price=12,
         )
         self.assertEqual(str(dish), "name1")
-    
+
     def test_dish_str(self):
-        cook1 = get_user_model().objects.create_user(username="username1", password="password")
-        cook2 = get_user_model().objects.create_user(username="username2", password="password")
+        cook1 = get_user_model().objects.create_user(
+            username="username1", password="password"
+        )
+        cook2 = get_user_model().objects.create_user(
+            username="username2", password="password"
+        )
         ingredient1 = Ingredient.objects.create(name="ingredient1")
         ingredient2 = Ingredient.objects.create(name="ingredient2")
         dish_type = DishType.objects.create(name="type_name")
