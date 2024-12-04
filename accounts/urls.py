@@ -9,11 +9,13 @@ from .views import (
     CookDeleteView,
     ChangePasswordView,
     RegisterView,
+    LoginView,
 )
 
 app_name = "accounts"
 
 urlpatterns = [
+    path("login/", LoginView.as_view(), name="login"),
     path("", include("django.contrib.auth.urls")),
     path("register/", RegisterView.as_view(), name="register"),
     path("cooks/", CookListView.as_view(), name="cook-list"),

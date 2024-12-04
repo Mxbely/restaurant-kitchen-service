@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
 
 from django import forms
-from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate
 
 from .models import Cook
 
@@ -111,3 +112,43 @@ class ChangePasswordForm(PasswordChangeForm):
 
     class Meta:
         fields = ["old_password", "new_password1", "new_password2"]
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Username",
+                "class": "form-control"
+            }
+        )
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "form-control"
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+
+        if username is not None and password:
+            self.user = authenticate(
+                self.request,
+                username=username,
+                password=password
+            )
+            if self.user is None:
+                raise forms.ValidationError(
+                    "Please enter a correct username and password.",
+                    code='invalid_login',
+                )
+            else:
+                self.confirm_login_allowed(self.user)
+
+        return cleaned_data

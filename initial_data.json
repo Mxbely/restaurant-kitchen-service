@@ -1,850 +1,330 @@
 [
-{
-    "model": "accounts.cook",
-    "pk": 1,
-    "fields": {
-        "password": "pbkdf2_sha256$260000$randomhash",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "chefjohn",
-        "first_name": "John",
-        "last_name": "Doe",
-        "email": "chefjohn@example.com",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2024-11-28T17:17:38.572Z",
-        "year_of_experience": 10,
-        "groups": [],
-        "user_permissions": []
+    {
+        "model": "accounts.cook",
+        "pk": 1,
+        "fields": {
+            "username": "chefjohn",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "chefjohn@example.com",
+            "year_of_experience": 10,
+            "password": "pbkdf2_sha256$260000$randomhash",
+            "is_staff": true,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 2,
+        "fields": {
+            "username": "chefmary",
+            "first_name": "Mary",
+            "last_name": "Smith",
+            "email": "chefmary@example.com",
+            "year_of_experience": 5,
+            "password": "pbkdf2_sha256$260000$randomhash",
+            "is_staff": true,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 3,
+        "fields": {
+            "username": "mxbely",
+            "first_name": "Max",
+            "last_name": "Bilyi",
+            "email": "mxbely@example.com",
+            "year_of_experience": null,
+            "password": "pbkdf2_sha256$260000$wdrEKCPh9aW6jYKnXL4hsN0ifBuNOOPcHI8q4I9dt3E=",
+            "is_staff": true,
+            "is_superuser": true
+        }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 4,
+        "fields": { 
+            "username": "annachef", 
+            "first_name": "Anna", 
+            "last_name": "Chef", 
+            "email": "annachef@example.com", 
+            "year_of_experience": 2, 
+            "password": "admin", 
+            "is_staff": true, 
+            "is_superuser": false }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 5,
+        "fields": {
+            "username": "guestchef",
+            "first_name": "Guest",
+            "last_name": "Chef",
+            "email": "guestchef@example.com",
+            "year_of_experience": null,
+            "password": "pbkdf2_sha256$260000$randomhash",
+            "is_staff": false,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 1,
+        "fields": { "name": "Tomato" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 2,
+        "fields": { "name": "Cheese" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 3,
+        "fields": { "name": "Basil" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 4,
+        "fields": { "name": "Chicken" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 5,
+        "fields": { "name": "Cucumber" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 6,
+        "fields": { "name": "Onion" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 7,
+        "fields": { "name": "Pepper" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 8,
+        "fields": { "name": "Mushrooms" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 9,
+        "fields": { "name": "Olives" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 10,
+        "fields": { "name": "Feta Cheese" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 11,
+        "fields": { "name": "Parmesan Cheese" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 12,
+        "fields": { "name": "Lemon" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 1,
+        "fields": { "name": "Pizza" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 2,
+        "fields": { "name": "Salad" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 3,
+        "fields": { "name": "Pasta" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 4,
+        "fields": { "name": "Soup" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 5,
+        "fields": { "name": "Grill" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 6,
+        "fields": { "name": "Dessert" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 7,
+        "fields": { "name": "Seafood" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 8,
+        "fields": { "name": "Breakfast" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 9,
+        "fields": { "name": "Burger" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 10,
+        "fields": { "name": "BBQ" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 11,
+        "fields": { "name": "Other" }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 1,
+        "fields": {
+            "name": "Margherita Pizza",
+            "description": "Classic Italian pizza with tomato, cheese, and basil.",
+            "dish_type": 1,
+            "price": "12.99",
+            "cooks": [1, 2],
+            "ingredients": [1, 2, 3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 2,
+        "fields": {
+            "name": "Greek Salad",
+            "description": "Refreshing salad with cucumber, tomato, feta cheese, and olives.",
+            "dish_type": 2,
+            "price": "8.99",
+            "cooks": [2],
+            "ingredients": [1, 5, 9, 10]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 3,
+        "fields": {
+            "name": "Chicken Alfredo Pasta",
+            "description": "Creamy pasta with grilled chicken and parmesan cheese.",
+            "dish_type": 3,
+            "price": "15.99",
+            "cooks": [1],
+            "ingredients": [4, 2, 6]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 4,
+        "fields": {
+            "name": "Tomato Soup",
+            "description": "Rich and creamy tomato soup with basil.",
+            "dish_type": 4,
+            "price": "7.99",
+            "cooks": [1, 2],
+            "ingredients": [1, 3, 6]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 5,
+        "fields": {
+            "name": "Grilled Chicken",
+            "description": "Perfectly grilled chicken served with a side of vegetables.",
+            "dish_type": 5,
+            "price": "18.99",
+            "cooks": [2],
+            "ingredients": [4, 5, 7]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 6,
+        "fields": {
+            "name": "Chocolate Cake",
+            "description": "Delicious chocolate cake with a creamy frosting.",
+            "dish_type": 6,
+            "price": "9.99",
+            "cooks": [1],
+            "ingredients": []
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 7,
+        "fields": {
+            "name": "Grilled Salmon",
+            "description": "Fresh salmon grilled to perfection, served with lemon.",
+            "dish_type": 7,
+            "price": "22.99",
+            "cooks": [2],
+            "ingredients": [7, 8]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 8,
+        "fields": {
+            "name": "Omelette",
+            "description": "Classic breakfast omelette with vegetables and cheese.",
+            "dish_type": 8,
+            "price": "6.99",
+            "cooks": [1],
+            "ingredients": [2, 6, 7]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 9,
+        "fields": {
+            "name": "Cheeseburger",
+            "description": "Juicy burger with cheddar cheese, lettuce, and tomato.",
+            "dish_type": 9,
+            "price": "10.99",
+            "cooks": [2],
+            "ingredients": [1, 2, 4]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 10,
+        "fields": {
+            "name": "BBQ Ribs",
+            "description": "Tender BBQ ribs with a smoky sauce.",
+            "dish_type": 10,
+            "price": "19.99",
+            "cooks": [1],
+            "ingredients": [1, 2, 3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 11,
+        "fields": {
+            "name": "Vegan Pizza",
+            "description": "Vegan pizza with tomato, cheese, and basil.",
+            "dish_type": 11,
+            "price": "12.99",
+            "cooks": [4, 3],
+            "ingredients": [1, 2, 3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 12,
+        "fields": {
+            "name": "Testy Soup",
+            "description": "Testy soup with tomato, cheese, and basil.",
+            "dish_type": 4,
+            "price": "12.99",
+            "cooks": [5, 4],
+            "ingredients": [1, 2, 3]
+        }
     }
-},
-{
-    "model": "accounts.cook",
-    "pk": 2,
-    "fields": {
-        "password": "pbkdf2_sha256$260000$randomhash",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "chefmary",
-        "first_name": "Mary",
-        "last_name": "Smith",
-        "email": "chefmary@example.com",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2024-11-28T17:17:38.594Z",
-        "year_of_experience": 5,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.cook",
-    "pk": 4,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$rSqSjebmqQYanQ2nkx4zDa$/La/0olor6IVRignomyOngNwrK/24KR0KAnsdvC/Oio=",
-        "last_login": "2024-12-02T16:41:45.298Z",
-        "is_superuser": true,
-        "username": "admin",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2024-11-29T08:12:39.798Z",
-        "year_of_experience": 3,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.cook",
-    "pk": 5,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$voBZm0ULbrmfoZeDYBXF96$qtRTPbUUyobJxaWRS8qXYFDKuMxXLWkLbtD9DefAEPY=",
-        "last_login": "2024-11-30T11:51:55.674Z",
-        "is_superuser": false,
-        "username": "admin.user",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2024-11-30T11:50:56.104Z",
-        "year_of_experience": 1111111,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.cook",
-    "pk": 6,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$Fie671VjyugOibenw4XkLw$kgwgNRADSKz0iRF3C5klr4mxtOHe9ad7CI0EhDXJh8Y=",
-        "last_login": "2024-11-30T12:01:33.337Z",
-        "is_superuser": false,
-        "username": "admin111",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2024-11-30T12:01:30.453Z",
-        "year_of_experience": null,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.cook",
-    "pk": 7,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$MhBMb4tmoFgEHuEXwjMyY7$I4alCtDQ0jNzjcWex6qmgKEkRIDdksoBkKtcg6LdKco=",
-        "last_login": "2024-12-02T08:37:16.036Z",
-        "is_superuser": false,
-        "username": "it_is_not_admin",
-        "first_name": "notAdmin",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2024-12-02T08:37:10.007Z",
-        "year_of_experience": null,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 1,
-    "fields": {
-        "name": "Can add Cook",
-        "content_type": 1,
-        "codename": "add_cook"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-        "name": "Can change Cook",
-        "content_type": 1,
-        "codename": "change_cook"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-        "name": "Can delete Cook",
-        "content_type": 1,
-        "codename": "delete_cook"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-        "name": "Can view Cook",
-        "content_type": 1,
-        "codename": "view_cook"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-        "name": "Can add log entry",
-        "content_type": 2,
-        "codename": "add_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-        "name": "Can change log entry",
-        "content_type": 2,
-        "codename": "change_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-        "name": "Can delete log entry",
-        "content_type": 2,
-        "codename": "delete_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-        "name": "Can view log entry",
-        "content_type": 2,
-        "codename": "view_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-        "name": "Can add permission",
-        "content_type": 3,
-        "codename": "add_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-        "name": "Can change permission",
-        "content_type": 3,
-        "codename": "change_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-        "name": "Can delete permission",
-        "content_type": 3,
-        "codename": "delete_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-        "name": "Can view permission",
-        "content_type": 3,
-        "codename": "view_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-        "name": "Can add group",
-        "content_type": 4,
-        "codename": "add_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-        "name": "Can change group",
-        "content_type": 4,
-        "codename": "change_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-        "name": "Can delete group",
-        "content_type": 4,
-        "codename": "delete_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-        "name": "Can view group",
-        "content_type": 4,
-        "codename": "view_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-        "name": "Can add content type",
-        "content_type": 5,
-        "codename": "add_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-        "name": "Can change content type",
-        "content_type": 5,
-        "codename": "change_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-        "name": "Can delete content type",
-        "content_type": 5,
-        "codename": "delete_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-        "name": "Can view content type",
-        "content_type": 5,
-        "codename": "view_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-        "name": "Can add session",
-        "content_type": 6,
-        "codename": "add_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-        "name": "Can change session",
-        "content_type": 6,
-        "codename": "change_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-        "name": "Can delete session",
-        "content_type": 6,
-        "codename": "delete_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-        "name": "Can view session",
-        "content_type": 6,
-        "codename": "view_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-        "name": "Can add dish type",
-        "content_type": 7,
-        "codename": "add_dishtype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-        "name": "Can change dish type",
-        "content_type": 7,
-        "codename": "change_dishtype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-        "name": "Can delete dish type",
-        "content_type": 7,
-        "codename": "delete_dishtype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-        "name": "Can view dish type",
-        "content_type": 7,
-        "codename": "view_dishtype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 29,
-    "fields": {
-        "name": "Can add ingredient",
-        "content_type": 8,
-        "codename": "add_ingredient"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 30,
-    "fields": {
-        "name": "Can change ingredient",
-        "content_type": 8,
-        "codename": "change_ingredient"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 31,
-    "fields": {
-        "name": "Can delete ingredient",
-        "content_type": 8,
-        "codename": "delete_ingredient"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 32,
-    "fields": {
-        "name": "Can view ingredient",
-        "content_type": 8,
-        "codename": "view_ingredient"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 33,
-    "fields": {
-        "name": "Can add dish",
-        "content_type": 9,
-        "codename": "add_dish"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 34,
-    "fields": {
-        "name": "Can change dish",
-        "content_type": 9,
-        "codename": "change_dish"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 35,
-    "fields": {
-        "name": "Can delete dish",
-        "content_type": 9,
-        "codename": "delete_dish"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 36,
-    "fields": {
-        "name": "Can view dish",
-        "content_type": 9,
-        "codename": "view_dish"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-        "app_label": "accounts",
-        "model": "cook"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-        "app_label": "admin",
-        "model": "logentry"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-        "app_label": "auth",
-        "model": "permission"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-        "app_label": "auth",
-        "model": "group"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-        "app_label": "contenttypes",
-        "model": "contenttype"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-        "app_label": "sessions",
-        "model": "session"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-        "app_label": "kitchen",
-        "model": "dishtype"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 8,
-    "fields": {
-        "app_label": "kitchen",
-        "model": "ingredient"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 9,
-    "fields": {
-        "app_label": "kitchen",
-        "model": "dish"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "4x6hssg6qmrjv4whzgavzzg02r3wy4j8",
-    "fields": {
-        "session_data": ".eJxVjMsOgyAQRf9l1g1RQKwuu_cbyDADhT4wEe2m6b8XEzduzzn3fiFvb_tJJa0FRnkBi9sa7Vb8YhPDCAZOzCE9fd4FPzDfZ0FzXpfkxJ6IwxYxzexft6M9HUQssa6vsqe2lxxch60Og2ZFjRw0sQreO3ZGBWcqQWKmILlBDlgrbVTTqQ5-f6vmPhA:1tHMAH:bEVh39oFKbtdYptXoUwkmRn2Spq2ZaaKTKMHdWL0KHo",
-        "expire_date": "2024-12-14T12:01:33.738Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "onn9pm1e0590ctpc8c0dd1n3u1mb83j0",
-    "fields": {
-        "session_data": "eyJudW1fdmlzaXRzIjoxfQ:1tHhnP:uw3GyEZu-WgEOpM5XuuPWadNrcV2X9ud7yL6fW4l24M",
-        "expire_date": "2024-12-15T11:07:23.052Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "ywsz67pe1rcxaf2aflawck7c2ejczsui",
-    "fields": {
-        "session_data": ".eJxVjDsOwyAQRO-ydYRsg_m4TJ8zoIWFmHxAMiZNlLvHlty4GY3mzcwXcnvbT6pprTCJC1hs62xbDYtNBBMIOGUO_TPkHdAD870wX_K6JMf2CjtoZbdC4XU9uqeDGeu8rXkIjnrJseuiEYM0gnOKig-INHrJtSa1WepH1SmziYkaTXBeGxEHreH3B4j5PO4:1tIA2s:cDrTQ1ZVPcf2YOaDos8YSKBAik6zYpDA8I-UxOqELNs",
-        "expire_date": "2024-12-16T17:17:14.481Z"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 1,
-    "fields": {
-        "name": "Tomato"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 2,
-    "fields": {
-        "name": "Cheese"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 3,
-    "fields": {
-        "name": "Basil"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 4,
-    "fields": {
-        "name": "Chicken"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 5,
-    "fields": {
-        "name": "Cucumber"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 6,
-    "fields": {
-        "name": "Onion"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 7,
-    "fields": {
-        "name": "Pepper"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 8,
-    "fields": {
-        "name": "Mushrooms"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 9,
-    "fields": {
-        "name": "Olives"
-    }
-},
-{
-    "model": "kitchen.ingredient",
-    "pk": 10,
-    "fields": {
-        "name": "Feta Cheese"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 1,
-    "fields": {
-        "name": "Pizza"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 2,
-    "fields": {
-        "name": "Salad"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 3,
-    "fields": {
-        "name": "Pasta"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 4,
-    "fields": {
-        "name": "Soup"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 5,
-    "fields": {
-        "name": "Grill"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 6,
-    "fields": {
-        "name": "Dessert"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 7,
-    "fields": {
-        "name": "Seafood"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 8,
-    "fields": {
-        "name": "Breakfast"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 9,
-    "fields": {
-        "name": "Burger"
-    }
-},
-{
-    "model": "kitchen.dishtype",
-    "pk": 10,
-    "fields": {
-        "name": "BBQ"
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 1,
-    "fields": {
-        "name": "Margherita Pizza",
-        "description": "Classic Italian pizza with tomato, cheese, and basil.",
-        "dish_type": 1,
-        "price": "12.99",
-        "cooks": [
-            1,
-            2
-        ],
-        "ingredients": [
-            3,
-            2,
-            1
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 2,
-    "fields": {
-        "name": "Greek Salad",
-        "description": "Refreshing salad with cucumber, tomato, feta cheese, and olives.",
-        "dish_type": 2,
-        "price": "8.99",
-        "cooks": [
-            2
-        ],
-        "ingredients": [
-            5,
-            10,
-            9,
-            1
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 3,
-    "fields": {
-        "name": "Chicken Alfredo Pasta",
-        "description": "Creamy pasta with grilled chicken and parmesan cheese.",
-        "dish_type": 3,
-        "price": "15.99",
-        "cooks": [
-            1
-        ],
-        "ingredients": [
-            2,
-            4,
-            6
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 4,
-    "fields": {
-        "name": "Tomato Soup",
-        "description": "Rich and creamy tomato soup with basil.",
-        "dish_type": 4,
-        "price": "7.99",
-        "cooks": [
-            1,
-            2
-        ],
-        "ingredients": [
-            3,
-            6,
-            1
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 5,
-    "fields": {
-        "name": "Grilled Chicken",
-        "description": "Perfectly grilled chicken served with a side of vegetables.",
-        "dish_type": 5,
-        "price": "18.99",
-        "cooks": [
-            2
-        ],
-        "ingredients": [
-            4,
-            5,
-            7
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 6,
-    "fields": {
-        "name": "Chocolate Cake",
-        "description": "Delicious chocolate cake with a creamy frosting.",
-        "dish_type": 6,
-        "price": "9.99",
-        "cooks": [
-            1
-        ],
-        "ingredients": []
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 7,
-    "fields": {
-        "name": "Grilled Salmon",
-        "description": "Fresh salmon grilled to perfection, served with lemon.",
-        "dish_type": 7,
-        "price": "22.99",
-        "cooks": [
-            2
-        ],
-        "ingredients": [
-            8,
-            7
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 8,
-    "fields": {
-        "name": "Omelette",
-        "description": "Classic breakfast omelette with vegetables and cheese.",
-        "dish_type": 8,
-        "price": "6.99",
-        "cooks": [
-            1
-        ],
-        "ingredients": [
-            2,
-            6,
-            7
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 9,
-    "fields": {
-        "name": "Cheeseburger",
-        "description": "Juicy burger with cheddar cheese, lettuce, and tomato.",
-        "dish_type": 9,
-        "price": "10.99",
-        "cooks": [
-            2
-        ],
-        "ingredients": [
-            2,
-            4,
-            1
-        ]
-    }
-},
-{
-    "model": "kitchen.dish",
-    "pk": 10,
-    "fields": {
-        "name": "BBQ Ribs",
-        "description": "Tender BBQ ribs with a smoky sauce.",
-        "dish_type": 10,
-        "price": "19.99",
-        "cooks": [
-            1
-        ],
-        "ingredients": []
-    }
-}
 ]

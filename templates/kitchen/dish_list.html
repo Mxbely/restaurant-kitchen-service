@@ -41,23 +41,26 @@
             <div class="mb-5">
               <div class="mb-4">
                 <span class="h5">Dishes</span>
-                <a style="float:right" href="{% url 'kitchen:dish-create' %}" style="float:right" class="btn btn-primary link-to-page">Create</a>
+                <a style="float:right" href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">Create</a>
               </div>
               <div class="table-responsive-sm">
-                <table class="table table-striped">
-                  <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                  </tr>
-                  {% for dish in dish_list %}
+                <table class="table table-hover table-striped shadow-sm rounded">
+                  <thead class="bg-light">
                     <tr>
-                      <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="text-primary text-decoration-underline">{{ dish.name }}</a></td>
-                      <td>{{ dish.dish_type }}</td>
-                      <td>{{ dish.price }}</td>
-
+                      <th class="border-0">Name</th>
+                      <th class="border-0">Type</th>
+                      <th class="border-0">Price</th>
                     </tr>
-                  {% endfor %}
+                  </thead>
+                  <tbody>
+                    {% for dish in dish_list %}
+                      <tr class="align-middle">
+                        <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="username-link text-primary hover-text-dark btn btn-outline-gray-400">{{ dish.name }}</a></td>
+                        <td>{{ dish.dish_type }}</td>
+                        <td>{{ dish.price }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
                 </table>
               </div>
             </div>

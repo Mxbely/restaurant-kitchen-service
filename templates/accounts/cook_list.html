@@ -17,15 +17,14 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-8 text-center">
-            <h1 class="display-3 mb-4">Cooks</h1>
-            <p class="lead mb-5">information</p>
-            <div class="alert bg-secondary" role="alert">
-              <span class="fas fa-search"></span>
-              {% comment %} <a class="fw-bold text-white text-underline mx-1" href="#" target="_blank">See</a> ...... {% endcomment %}
+            <h1 class="display-3 mb-4 text-shadow">Cooks</h1>
+            <p class="lead mb-5 font-weight-light">information</p>
+            <div class="alert bg-secondary shadow-sm rounded-lg" role="alert">
+              <span class="fas fa-search text-white mb-2"></span>
               <form method="get" action="" class="form-inline">
                 {{ search_form|crispy }}
                 <br>
-                <input class="btn btn-white" type="submit" value="Search">
+                <input class="btn btn-white hover-shadow transition-all" type="submit" value="Search">
               </form>
             </div>
           </div>
@@ -45,25 +44,33 @@
                 {% comment %} <a href="{% url 'accounts:cook-create' %}" style="float:right" class="btn btn-primary link-to-page">Create</a> {% endcomment %}
               </div>
               <div class="table-responsive-sm">
-                <table class="table table-striped">
-                  <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>E-mail</th>
-                    <th>Experience</th>
-                  </tr>
-                  {% for cook in cook_list %}
+                <table class="table table-hover table-striped shadow-sm rounded">
+                  <thead class="bg-light">
                     <tr>
-                      <td>{{ cook.id }}</td>
-                      <td><a href="{% url 'accounts:cook-detail' pk=cook.id %}" class="text-primary text-decoration-underline">{{ cook.username }}</a></td>
-                      <td>{{ cook.first_name }}</td>
-                      <td>{{ cook.last_name }}</td>
-                      <td>{{ cook.email }}</td>
-                      <td>{% if cook.year_of_experience %}{{ cook.year_of_experience }}{% else %}Unknown{% endif %}</td>
+                      <th class="border-0">ID</th>
+                      <th class="border-0">Username</th>
+                      <th class="border-0">First Name</th>
+                      <th class="border-0">Last Name</th>
+                      <th class="border-0">E-mail</th>
+                      <th class="border-0">Experience</th>
                     </tr>
-                  {% endfor %}
+                  </thead>
+                  <tbody>
+                    {% for cook in cook_list %}
+                      <tr class="align-middle">
+                        <td>{{ cook.id }}</td>
+                        <td>
+                          <a href="{% url 'accounts:cook-detail' pk=cook.id %}" class="username-link text-primary hover-text-dark btn btn-outline-gray-400">
+                            {{ cook.username }}
+                          </a>
+                        </td>
+                        <td>{{ cook.first_name }}</td>
+                        <td>{{ cook.last_name }}</td>
+                        <td>{{ cook.email }}</td>
+                        <td>{% if cook.year_of_experience %}{{ cook.year_of_experience }}{% else %}Unknown{% endif %}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
                 </table>
               </div>
             </div>

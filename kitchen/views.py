@@ -37,7 +37,7 @@ def index(request):
 class DishListView(generic.ListView):
     model = Dish
     template_name = "kitchen/dish_list.html"
-    paginate_by = 5
+    paginate_by = 10
     queryset = Dish.objects.all().prefetch_related("cooks", "ingredients")
 
     def get_context_data(self, object_list=None, **kwargs):
@@ -87,7 +87,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
 class IngredientListView(generic.ListView):
     model = Ingredient
     template_name = "kitchen/ingredient_list.html"
-    paginate_by = 5
+    paginate_by = 10
 
     def get_context_data(self, object_list=None, **kwargs):
         context = super(IngredientListView, self).get_context_data(**kwargs)
@@ -130,9 +130,9 @@ class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "kitchen/dish_type_list.html"
-    paginate_by = 5
+    paginate_by = 10
 
-    def get_context_data(self, object_list=None, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super(DishTypeListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name", "")
         context["search_form"] = DishTypeSearchForm(initial={"name": name})

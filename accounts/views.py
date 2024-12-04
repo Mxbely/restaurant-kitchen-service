@@ -4,23 +4,33 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
 
 from accounts.forms import (
     ChangePasswordForm,
     CookRegisterForm,
     CookSearchForm,
     CookUpdateForm,
+    LoginForm,
 )
 from accounts.models import Cook
 from restaurant_kitchen_service.settings.base import LOGIN_URL
 
 
+class LoginView(LoginView):
+    form_class = LoginForm
+    template_name = "registration/login.html"
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+
 class CookListView(generic.ListView):
     model = Cook
-    paginate_by = 5
+    paginate_by = 10
     queryset = Cook.objects.prefetch_related("dishes")
 
-    def get_context_data(self, object_list=None, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super(CookListView, self).get_context_data(**kwargs)
         username = self.request.GET.get("username")
         context["search_form"] = CookSearchForm(initial={"username": username})
