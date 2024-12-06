@@ -36,7 +36,7 @@ class CookListView(generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Cook.objects.prefetch_related("dishes")
+        queryset = Cook.objects.prefetch_related("cooks_dishes")
         form = CookSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(username__icontains=form.cleaned_data["username"])
