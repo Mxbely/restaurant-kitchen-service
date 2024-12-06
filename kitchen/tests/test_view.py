@@ -238,3 +238,51 @@ class PrivateTests(TestCase):
         res = self.client.post(url)
         self.assertEqual(res.status_code, 302)
         self.assertFalse(Ingredient.objects.filter(id=ingredient.id).exists())
+
+
+class SearchTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username="user1",
+            password="password123"
+        )
+        self.client.force_login(self.user)
+        self.dish_type = DishType.objects.create(name="pizza")
+        self.ingredient = Ingredient.objects.create(name="ingredient1")
+
+    def test_dish_search(self):
+        """Test searching dishes by name"""
+        Dish.objects.create(
+            name="pizza1",
+            description="super pizza",
+            price=10.99,
+            dish_type=self.dish_type
+        )
+        Dish.objects.create(
+            name="pizza2",
+            description="no super pizza",
+            price=12.99,
+            dish_type=self.dish_type
+        )
+
+        response = self.client.get(DISH_LIST_URL + "?name=1")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context["dish_list"]), 1)
+
+    def test_ingredient_search(self):
+        """Test searching ingredients by name"""
+        Ingredient.objects.create(name="ingred1")
+        Ingredient.objects.create(name="ingred2")
+
+        response = self.client.get(INGREDIENT_LIST_URL + "?name=1")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context["ingredient_list"]), 2)
+
+    def test_dish_type_search(self):
+        """Test searching dish types by name"""
+        DishType.objects.create(name="type1")
+        DishType.objects.create(name="type2")
+
+        response = self.client.get(DISH_TYPE_LIST_URL + "?name=1")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context["dishtype_list"]), 1)

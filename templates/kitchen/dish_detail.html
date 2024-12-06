@@ -39,9 +39,6 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-12">
-            {% comment %} <div class="mb-4">
-                            <span class="h5">Default table</span>
-                        </div> {% endcomment %}
 
             <div class="mb-5">
               <div class="mb-4">
@@ -51,12 +48,10 @@
                 <table class="table table-striped">
                   <tr>
                     <th>Name</th>
-                    {% comment %} <th>Dish Type</th> {% endcomment %}
                   </tr>
                   {% for ingredient in dish.ingredients.all %}
                     <tr>
                       <td>{{ ingredient.name }}</td>
-                      {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
                     </tr>
                   {% endfor %}
 
@@ -71,9 +66,6 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-12">
-            {% comment %} <div class="mb-4">
-                            <span class="h5">Default table</span>
-                        </div> {% endcomment %}
 
             <div class="mb-5">
               <div class="mb-4">
@@ -83,12 +75,10 @@
                 <table class="table table-striped">
                   <tr>
                     <th>Name</th>
-                    {% comment %} <th>Dish Type</th> {% endcomment %}
                   </tr>
                   {% for cook in dish.cooks.all %}
                     <tr>
                       <td>{{ cook.username }}</td>
-                      {% comment %} <td>{{ ingredient.dishes.dish_type.name}}</td> {% endcomment %}
                     </tr>
                   {% endfor %}
 

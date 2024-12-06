@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+from django.test import Client
 
 
 COOK_LIST_URL = reverse("accounts:cook-list")
 COOK_DETAIL_URL = reverse("accounts:cook-detail", args=[1])
+LOGIN_URL = reverse("accounts:login")
 
 
 class PublicTests(TestCase):
@@ -47,7 +49,7 @@ class RegisterViewTest(TestCase):
     def setUp(self):
         self.register_url = reverse(
             "accounts:register"
-        )  # Replace with your namespace if needed
+        )
         self.user_model = get_user_model()
 
     def test_register_view_get(self):
@@ -94,3 +96,41 @@ class RegisterViewTest(TestCase):
         self.assertEqual(self.user_model.objects.count(), 0)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "registration/register.html")
+
+
+class StatusCodeTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = get_user_model().objects.create_user(
+            username="user1",
+            password="password123"
+        )
+        self.other_user = get_user_model().objects.create_user(
+            username="user2",
+            password="password234"
+        )
+
+    def test_404_on_no_exist_cook(self):
+        """Test that return 404 for no-exist cooks id."""
+        self.client.force_login(self.user)
+        no_exist_id = 0
+        detail_url = reverse("accounts:cook-detail", args=[no_exist_id])
+        update_url = reverse("accounts:cook-update", args=[no_exist_id])
+        delete_url = reverse("accounts:cook-delete", args=[no_exist_id])
+        self.assertEqual(self.client.get(detail_url).status_code, 404)
+        self.assertEqual(self.client.get(update_url).status_code, 404)
+        self.assertEqual(self.client.get(delete_url).status_code, 404)
+
+    def test_redirect_after_login_required(self):
+        """Test that protected views redirect to the login page."""
+        protected_urls = [
+            reverse("accounts:cook-detail", args=[self.user.id]),
+            reverse("accounts:cook-update", args=[self.user.id]),
+            reverse("accounts:cook-delete", args=[self.user.id]),
+            reverse("accounts:change-password", args=[self.user.id]),
+        ]
+
+        for url in protected_urls:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 302)
+

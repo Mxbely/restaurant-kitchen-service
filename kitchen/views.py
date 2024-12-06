@@ -16,21 +16,22 @@ from kitchen.forms import (
 from restaurant_kitchen_service.settings.base import LOGIN_URL
 
 
-def index(request):
-    num_cooks = Cook.objects.all().count()
-    num_dishes = Dish.objects.all().count()
-    num_dish_types = DishType.objects.all().count()
-    num_ingredients = Ingredient.objects.all().count()
-    num_visits = request.session.get("num_visits", 0)
-    request.session["num_visits"] = num_visits + 1
-    context = {
-        "num_cooks": num_cooks,
-        "num_dishes": num_dishes,
-        "num_dish_types": num_dish_types,
-        "num_ingredients": num_ingredients,
-        "num_visits": num_visits + 1,
-    }
-    return render(request, "kitchen/index.html", context=context)
+class IndexView(generic.View):
+    def get(self, request):
+        num_cooks = Cook.objects.count()
+        num_dishes = Dish.objects.count()
+        num_dish_types = DishType.objects.count()
+        num_ingredients = Ingredient.objects.count()
+        num_visits = request.session.get("num_visits", 0)
+        self.request.session["num_visits"] = num_visits + 1
+        context = {
+            "num_cooks": num_cooks,
+            "num_dishes": num_dishes,
+            "num_dish_types": num_dish_types,
+            "num_ingredients": num_ingredients,
+            "num_visits": num_visits + 1,
+        }
+        return render(request, "kitchen/index.html", context=context)
 
 
 # Dish
@@ -38,7 +39,6 @@ class DishListView(generic.ListView):
     model = Dish
     template_name = "kitchen/dish_list.html"
     paginate_by = 10
-    queryset = Dish.objects.all().prefetch_related("cooks", "ingredients")
 
     def get_context_data(self, object_list=None, **kwargs):
         context = super(DishListView, self).get_context_data(**kwargs)
@@ -47,7 +47,7 @@ class DishListView(generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Dish.objects.all().select_related("dish_type")
+        queryset = Dish.objects.select_related("dish_type").prefetch_related("cooks", "ingredients")
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(name__icontains=form.cleaned_data["name"])

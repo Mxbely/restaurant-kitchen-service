@@ -28,7 +28,6 @@ class LoginView(LoginView):
 class CookListView(generic.ListView):
     model = Cook
     paginate_by = 10
-    queryset = Cook.objects.prefetch_related("dishes")
 
     def get_context_data(self, **kwargs):
         context = super(CookListView, self).get_context_data(**kwargs)
@@ -37,7 +36,7 @@ class CookListView(generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Cook.objects.all()
+        queryset = Cook.objects.prefetch_related("dishes")
         form = CookSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(username__icontains=form.cleaned_data["username"])
