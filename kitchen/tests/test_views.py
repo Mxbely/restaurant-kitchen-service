@@ -43,7 +43,7 @@ class PublicTests(TestCase):
         res = self.client.get(DISH_TYPE_LIST_URL)
         self.assertEqual(res.status_code, 200)
 
-    def test_dish_type_list_required(self):
+    def test_ingredient_list_required(self):
         """Test that the ingredient list view is accessible without login."""
         res = self.client.get(INGREDIENT_LIST_URL)
         self.assertEqual(res.status_code, 200)

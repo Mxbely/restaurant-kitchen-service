@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
+from django.test import Client
 from django.test import TestCase
 from django.urls import reverse
-from django.test import Client
-
 
 COOK_LIST_URL = reverse("accounts:cook-list")
 COOK_DETAIL_URL = reverse("accounts:cook-detail", args=[1])
@@ -15,10 +14,13 @@ class PublicTests(TestCase):
         res = self.client.get(COOK_DETAIL_URL)
         self.assertNotEqual(res.status_code, 200)
 
-    def test_cook_login_required_cook_list(self):
-        """Test that the cook list view is accessible without login and that created cooks are present in the list."""
+    def test_cook_list_accessible_without_login(self):
+        """Test that the cook list view is accessible without login."""
         res = self.client.get(COOK_LIST_URL)
         self.assertEqual(res.status_code, 200)
+
+    def test_created_cooks_present_in_list(self):
+        """Test that created cooks are present in the list."""
         cook1 = get_user_model().objects.create_user(
             username="user1", password="password1"
         )
@@ -27,6 +29,7 @@ class PublicTests(TestCase):
         )
         cooks = get_user_model().objects.all()
         self.assertIn(cook1, list(cooks))
+        self.assertIn(cook2, list(cooks))
 
 
 class PrivateTests(TestCase):

@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-from django.db import IntegrityError
 
 from kitchen.models import Ingredient, DishType, Dish
 
@@ -14,17 +13,7 @@ class TestModels(TestCase):
         dish_type = DishType.objects.create(name="name1")
         self.assertEqual(str(dish_type), "name1")
 
-    def test_dish_str(self):
-        dish_type = DishType.objects.create(name="type_name")
-        dish = Dish.objects.create(
-            name="name1",
-            description="test_description",
-            dish_type=dish_type,
-            price=12,
-        )
-        self.assertEqual(str(dish), "name1")
-
-    def test_dish_str(self):
+    def test_dish_str_and_relations(self):
         cook1 = get_user_model().objects.create_user(
             username="username1", password="password"
         )
@@ -74,7 +63,7 @@ class ModelOrderingTest(TestCase):
         )
 
     def test_dish_ordering(self):
-        """Тест сортування страв"""
+        """Test ordering dishes by name"""
         dish_type = DishType.objects.create(name="type_name")
         Dish.objects.create(name="dish2", dish_type=dish_type, price=7)
         Dish.objects.create(name="dish3", dish_type=dish_type, price=6)

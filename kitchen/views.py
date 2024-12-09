@@ -1,18 +1,16 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.models import Dish, Ingredient, DishType
 from accounts.models import Cook
-
-from django.urls import reverse_lazy
 from kitchen.forms import (
     IngredientSearchForm,
     DishTypeSearchForm,
     DishSearchForm,
     DishCreateForm,
 )
+from kitchen.models import Dish, Ingredient, DishType
 from restaurant_kitchen_service.settings.base import LOGIN_URL
 
 

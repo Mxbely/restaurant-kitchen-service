@@ -1,9 +1,10 @@
 from django.contrib import admin
+
 from .models import Ingredient, DishType, Dish
 
 
 @admin.register(Ingredient)
-class IngrediensAdmin(admin.ModelAdmin):
+class IngredientAdmin(admin.ModelAdmin):
     pass
 
 

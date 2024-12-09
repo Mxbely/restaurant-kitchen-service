@@ -121,18 +121,3 @@ class FormsTest(TestCase):
         form = LoginForm(data=form_data, request=request)
         self.assertFalse(form.is_valid())
         self.assertIn('__all__', form.errors)
-
-    # def test_change_password_form_invalid_old_password(self):
-    #     """Test that the change password form is invalid if the old password is incorrect."""
-    #     user = get_user_model().objects.create_user(
-    #         username="user.test",
-    #         password="Password12345"
-    #     )
-    #     form_data = {
-    #         "old_password": "WrongPassword",
-    #         "new_password1": "NewPass123",
-    #         "new_password2": "NewPass123",
-    #     }
-    #     form = ChangePasswordForm(user=user, data=form_data)
-    #     self.assertFalse(form.is_valid())
-    #     self.assertIn("old_password", form.errors)
