@@ -1,0 +1,91 @@
+<header class="header-global">
+  <nav id="navbar-main" aria-label="Primary navigation"
+       class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark">
+    <div class="container position-relative">
+      <a class="navbar-brand me-lg-5" href="{% url 'kitchen:index' %}">
+        <img class="navbar-brand-dark" src="{{ ASSETS_ROOT }}/img/brand/light.svg" alt="Logo light">
+        <img class="navbar-brand-light" src="{{ ASSETS_ROOT }}/img/brand/dark.svg" alt="Logo dark">
+      </a>
+      <div class="navbar-collapse collapse me-auto" id="navbar_global">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="{% url 'kitchen:index' %}">
+                <img src="{{ ASSETS_ROOT }}/img/brand/dark.svg" alt="Themesberg logo">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <a href="#navbar_global" class="fas fa-times" data-bs-toggle="collapse" data-bs-target="#navbar_global"
+                 aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="frontPagesDropdown" aria-expanded="false"
+               data-bs-toggle="dropdown">
+              Info
+              <span class="fas fa-angle-down nav-link-arrow ms-1"></span>
+            </a>
+            <div class="dropdown-menu px-0" aria-labelledby="frontPagesDropdown">
+              <div class="row g-0">
+                <div class="col ps-0 py-3">
+                  <ul class="list-style-none">
+                    <li class="megamenu-item">
+                      <a class="dropdown-item" href="{% url 'kitchen:about' %}">About</a>
+                    </li>
+                    <li class="megamenu-item">
+                      <a class="dropdown-item" href="{% url 'kitchen:contact' %}">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="componentsDropdown" aria-expanded="false"
+               data-bs-toggle="dropdown">
+              Categories
+              <span class="fas fa-angle-down nav-link-arrow ms-1"></span>
+            </a>
+            <div class="dropdown-menu p-0" aria-labelledby="componentsDropdown">
+              <div class="row g-0">
+                <div class="col ps-0 py-3">
+                  <ul class="list-style-none">
+                    <li><a class="dropdown-item" href="{% url 'accounts:cook-list' %}">Cooks</a></li>
+                    <li><a class="dropdown-item" href="{% url 'kitchen:dish-list' %}">Dishes</a></li>
+                    <li><a class="dropdown-item" href="{% url 'kitchen:dish-type-list' %}">Dish Types</a></li>
+                    <li><a class="dropdown-item" href="{% url 'kitchen:ingredient-list' %}">Ingredients</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex align-items-center">
+
+        {% if user.is_authenticated %}
+
+          <form method="post" action="{% url 'accounts:logout' %}">
+            {% csrf_token %}
+            <div>
+              <input type="submit" value="Logout" class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"> </div>
+          </form>
+
+          <a href="{% url 'accounts:cook-detail' pk=user.id %}" class="btn btn-tertiary">user: {{ user.username }}</a>
+        {% else %}
+
+          {% if accountslogout not in request.path %}
+            <a href="{% url 'accounts:login' %}?next={{ request.path }}"
+          {% else %}
+            <a href="{% url 'accounts:login' %}"
+          {% endif %}
+              class="btn btn-outline-gray-100 d-none d-lg-inline me-md-3"><span
+            class="fas fa-sign-out-alt me-2"></span>Login</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>
+

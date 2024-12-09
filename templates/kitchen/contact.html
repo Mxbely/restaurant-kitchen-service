@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Contact {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <main>
+
+    {% include 'includes/preloader.html' %}
+
+    <!-- Hero -->
+    <section class="section section-header pb-11 bg-primary text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-xl-8 text-center">
+            <h1 class="display-2 mb-3">Our location</h1>
+            <p class="lead">Attend our restaurant in Kyiv</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section -->
+    <div class="section py-0">
+      <div class="container mt-n10">
+        <div class="row">
+          <div class="col-12">
+            <iframe class="map rounded"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.920825486042!2d30.523984812680045!3d50.442575391439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf176bc24e9d%3A0x7b98e23db5a66536!2sLingva%20Media!5e0!3m2!1suk!2sua!4v1731786852019!5m2!1suk!2sua"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section -->
+
+    <!-- End of section -->
+
+  </main>
+
+  {% include 'includes/footer.html' %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

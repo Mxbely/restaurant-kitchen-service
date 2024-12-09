@@ -1,0 +1,330 @@
+[
+    {
+        "model": "accounts.cook",
+        "pk": 1,
+        "fields": {
+            "username": "chefjohn",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "chefjohn@example.com",
+            "year_of_experience": 10,
+            "password": "pbkdf2_sha256$260000$randomhash",
+            "is_staff": true,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 2,
+        "fields": {
+            "username": "chefmary",
+            "first_name": "Mary",
+            "last_name": "Smith",
+            "email": "chefmary@example.com",
+            "year_of_experience": 5,
+            "password": "pbkdf2_sha256$260000$randomhash",
+            "is_staff": true,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 3,
+        "fields": {
+            "username": "mxbely",
+            "first_name": "Max",
+            "last_name": "Bilyi",
+            "email": "mxbely@example.com",
+            "year_of_experience": null,
+            "password": "pbkdf2_sha256$260000$wdrEKCPh9aW6jYKnXL4hsN0ifBuNOOPcHI8q4I9dt3E=",
+            "is_staff": true,
+            "is_superuser": true
+        }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 4,
+        "fields": { 
+            "username": "annachef", 
+            "first_name": "Anna", 
+            "last_name": "Chef", 
+            "email": "annachef@example.com", 
+            "year_of_experience": 2, 
+            "password": "admin", 
+            "is_staff": true, 
+            "is_superuser": false }
+    },
+    {
+        "model": "accounts.cook",
+        "pk": 5,
+        "fields": {
+            "username": "guestchef",
+            "first_name": "Guest",
+            "last_name": "Chef",
+            "email": "guestchef@example.com",
+            "year_of_experience": null,
+            "password": "pbkdf2_sha256$260000$randomhash",
+            "is_staff": false,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 1,
+        "fields": { "name": "Tomato" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 2,
+        "fields": { "name": "Cheese" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 3,
+        "fields": { "name": "Basil" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 4,
+        "fields": { "name": "Chicken" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 5,
+        "fields": { "name": "Cucumber" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 6,
+        "fields": { "name": "Onion" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 7,
+        "fields": { "name": "Pepper" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 8,
+        "fields": { "name": "Mushrooms" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 9,
+        "fields": { "name": "Olives" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 10,
+        "fields": { "name": "Feta Cheese" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 11,
+        "fields": { "name": "Parmesan Cheese" }
+    },
+    {
+        "model": "kitchen.ingredient",
+        "pk": 12,
+        "fields": { "name": "Lemon" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 1,
+        "fields": { "name": "Pizza" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 2,
+        "fields": { "name": "Salad" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 3,
+        "fields": { "name": "Pasta" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 4,
+        "fields": { "name": "Soup" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 5,
+        "fields": { "name": "Grill" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 6,
+        "fields": { "name": "Dessert" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 7,
+        "fields": { "name": "Seafood" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 8,
+        "fields": { "name": "Breakfast" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 9,
+        "fields": { "name": "Burger" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 10,
+        "fields": { "name": "BBQ" }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 11,
+        "fields": { "name": "Other" }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 1,
+        "fields": {
+            "name": "Margherita Pizza",
+            "description": "Classic Italian pizza with tomato, cheese, and basil.",
+            "dish_type": 1,
+            "price": "12.99",
+            "cooks": [1, 2],
+            "ingredients": [1, 2, 3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 2,
+        "fields": {
+            "name": "Greek Salad",
+            "description": "Refreshing salad with cucumber, tomato, feta cheese, and olives.",
+            "dish_type": 2,
+            "price": "8.99",
+            "cooks": [2],
+            "ingredients": [1, 5, 9, 10]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 3,
+        "fields": {
+            "name": "Chicken Alfredo Pasta",
+            "description": "Creamy pasta with grilled chicken and parmesan cheese.",
+            "dish_type": 3,
+            "price": "15.99",
+            "cooks": [1],
+            "ingredients": [4, 2, 6]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 4,
+        "fields": {
+            "name": "Tomato Soup",
+            "description": "Rich and creamy tomato soup with basil.",
+            "dish_type": 4,
+            "price": "7.99",
+            "cooks": [1, 2],
+            "ingredients": [1, 3, 6]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 5,
+        "fields": {
+            "name": "Grilled Chicken",
+            "description": "Perfectly grilled chicken served with a side of vegetables.",
+            "dish_type": 5,
+            "price": "18.99",
+            "cooks": [2],
+            "ingredients": [4, 5, 7]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 6,
+        "fields": {
+            "name": "Chocolate Cake",
+            "description": "Delicious chocolate cake with a creamy frosting.",
+            "dish_type": 6,
+            "price": "9.99",
+            "cooks": [1],
+            "ingredients": []
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 7,
+        "fields": {
+            "name": "Grilled Salmon",
+            "description": "Fresh salmon grilled to perfection, served with lemon.",
+            "dish_type": 7,
+            "price": "22.99",
+            "cooks": [2],
+            "ingredients": [7, 8]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 8,
+        "fields": {
+            "name": "Omelette",
+            "description": "Classic breakfast omelette with vegetables and cheese.",
+            "dish_type": 8,
+            "price": "6.99",
+            "cooks": [1],
+            "ingredients": [2, 6, 7]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 9,
+        "fields": {
+            "name": "Cheeseburger",
+            "description": "Juicy burger with cheddar cheese, lettuce, and tomato.",
+            "dish_type": 9,
+            "price": "10.99",
+            "cooks": [2],
+            "ingredients": [1, 2, 4]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 10,
+        "fields": {
+            "name": "BBQ Ribs",
+            "description": "Tender BBQ ribs with a smoky sauce.",
+            "dish_type": 10,
+            "price": "19.99",
+            "cooks": [1],
+            "ingredients": [1, 2, 3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 11,
+        "fields": {
+            "name": "Vegan Pizza",
+            "description": "Vegan pizza with tomato, cheese, and basil.",
+            "dish_type": 11,
+            "price": "12.99",
+            "cooks": [4, 3],
+            "ingredients": [1, 2, 3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 12,
+        "fields": {
+            "name": "Testy Soup",
+            "description": "Testy soup with tomato, cheese, and basil.",
+            "dish_type": 4,
+            "price": "12.99",
+            "cooks": [5, 4],
+            "ingredients": [1, 2, 3]
+        }
+    }
+]
